@@ -1,0 +1,18 @@
+.moving-underline {
+  display: inline-block;
+}
+
+.moving-underline::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+.moving-underline:hover::after {
+  width: 100%;
+}
+/*# sourceMappingURL=animation.css.map */

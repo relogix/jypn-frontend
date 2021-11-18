@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import GlobalController from "./controllers/GlobalController";
+import Router from "./router";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App text-white montserrat" style={{ backgroundColor: "#111", minHeight: "100vh" }}>
+      <Provider store={store}>
+        <GlobalController>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </GlobalController>
+      </Provider>
     </div>
   );
 }
