@@ -21,22 +21,24 @@ const Updates = () => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
-        {updates.slice(2, 5).map((update, iUpdate) => (
-          <PreviewCard
-            key={iUpdate}
-            title={update.title}
-            date={update.createdAt}
-            path={`${publicRouteSlug.UPDATES_DETAIL}/${update.updateCode}/${stringToURL(update?.title)}`}
-          >
-            {update.thumbnailUrl ? (
-              <ProgressiveImage src={update.thumbnailUrl} placeholder={update.lowThumbnailUrl}>
-                {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
-              </ProgressiveImage>
-            ) : (
-              <p className="h-full whitespace-pre-wrap truncate">{update.content}</p>
-            )}
-          </PreviewCard>
-        ))}
+        {loadingUpdates
+          ? ["", "", ""].map((_, iComp) => <PreviewCard key={iComp} loading />)
+          : updates.slice(2, 5).map((update, iUpdate) => (
+              <PreviewCard
+                key={iUpdate}
+                title={update.title}
+                date={update.createdAt}
+                path={`${publicRouteSlug.UPDATES_DETAIL}/${update.updateCode}/${stringToURL(update?.title)}`}
+              >
+                {update.thumbnailUrl ? (
+                  <ProgressiveImage src={update.thumbnailUrl} placeholder={update.lowThumbnailUrl}>
+                    {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
+                  </ProgressiveImage>
+                ) : (
+                  <p className="h-full whitespace-pre-wrap truncate">{update.content}</p>
+                )}
+              </PreviewCard>
+            ))}
       </div>
     </div>
   );

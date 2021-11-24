@@ -13,4 +13,8 @@
   &:hover::after {
     width: 100%;
   }
+
+  &.active::after {
+    width: 100%;
+  }
 }

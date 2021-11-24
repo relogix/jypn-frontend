@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { publicRouteSlug } from "../../router/publicRoute";
 
 // State
 const initialState = {
   items: [
-    { name: "upcoming", label: "Upcoming", path: "/" },
-    { name: "update", label: "Update", path: "/" },
-    { name: "about", label: "About", path: "/" },
+    // { name: "upcoming", label: "Upcoming", path: "/" },
+    { name: "updates", label: "Updates", path: publicRouteSlug.UPDATES },
+    { name: "members", label: "Members", path: publicRouteSlug.MEMBERS },
   ],
 };
 

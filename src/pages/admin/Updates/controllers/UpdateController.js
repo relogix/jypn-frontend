@@ -1,15 +1,18 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import { Notification, toaster } from "rsuite";
+import { AuthContext } from "../../../../controllers/AuthController";
 
 export const UpdateContext = createContext();
 const { Provider } = UpdateContext;
 
 const UpdateController = ({ children }) => {
   const form = useForm();
+  const { userData } = useContext(AuthContext);
   const { updateCode } = useParams();
 
   // -------------------------------------
@@ -61,14 +64,22 @@ const UpdateController = ({ children }) => {
     const values = form.getValues();
 
     axios
-      .patch(`/update/update-data?updateId=${update?.updateId}`, {
-        title: values?.title,
-        content: values?.content,
-      })
+      .patch(
+        `/update/update-data?updateId=${update?.updateId}`,
+        {
+          title: values?.title,
+          content: values?.content,
+        },
+        { headers: { Authorization: `Bearer ${userData.token}` } }
+      )
       .then((res) => {
         toaster.push(<Notification type={"success"} header="Data successfully updated" />, { placement: "topEnd" });
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        toaster.push(<Notification type={"error"} header={`Update Failed. ${err.response.data?.message}`} />, {
+          placement: "topEnd",
+        });
+      })
       .finally(() => {
         setLoadingSubmitUpdateData(false);
         setReloadUpdate(true);

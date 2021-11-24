@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { Drawer } from "rsuite";
 import { useState } from "react";
@@ -29,9 +29,9 @@ const MobileSidebar = ({ open, setClose }) => {
 const NavbarItem = ({ to, children }) => {
   return (
     <li className="float-left">
-      <Link to={to} className="mx-4 px-4 py-2 moving-underline">
+      <NavLink to={to} activeClassName="active" className="mx-4 px-4 py-2 moving-underline">
         {children}
-      </Link>
+      </NavLink>
     </li>
   );
 };
@@ -58,7 +58,7 @@ const Navbar = () => {
           <MobileSidebar open={isMobileSidebarOpen} setClose={() => setMobileSidebarOpen(false)} />
         </div>
         <div className="text-sm hidden md:inline">
-          <ul>
+          <ul className="m-0">
             {navbarItems.map((navItem, iNavItem) => (
               <NavbarItem key={iNavItem} to={navItem.path}>
                 {navItem.label}

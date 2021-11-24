@@ -1,17 +1,23 @@
 import Controller from "./controllers/Controller";
+import { motion } from "framer-motion";
 import Hero from "./components/Hero";
 import Upcoming from "./components/Upcoming";
 import Updates from "./components/Updates";
 
 const Home = () => {
   return (
-    <div className="w-full pt-16 flex flex-col gap-y-20">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-full pt-16 flex flex-col gap-y-20"
+    >
       <Controller>
         <Hero />
-        <Upcoming />
+        {/* <Upcoming /> */}
         <Updates />
       </Controller>
-    </div>
+    </motion.div>
   );
 };
 

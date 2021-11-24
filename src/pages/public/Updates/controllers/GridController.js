@@ -41,8 +41,7 @@ const GridController = ({ children }) => {
         })
         .finally(() => {
           if (mounted) {
-            setTimeout(() => setReloadUpdates(false), 1000);
-
+            setTimeout(() => mounted && setReloadUpdates(false), page !== 1 ? 1000 : 0);
             setLoadingUpdates(false);
           }
         });

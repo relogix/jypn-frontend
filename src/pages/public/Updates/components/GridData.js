@@ -4,10 +4,11 @@ import { BiLeftArrowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import PreviewCard from "../../../../components/PreviewCard";
-import GridController, { GridContext } from "../controllers/GridController";
+import { GridContext } from "../controllers/GridController";
 import ProgressiveImage from "react-progressive-image";
 import { stringToURL } from "../../../../utils/string.util";
 import { publicRouteSlug } from "../../../../router/publicRoute";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { Loader } from "rsuite";
 
@@ -26,7 +27,7 @@ const GridData = () => {
   };
 
   return (
-    <div ref={divRef}>
+    <motion.div ref={divRef} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="flex justify-between mb-6">
         <Link to="#" onClick={() => history.goBack()}>
           <Button className="flex items-center">
@@ -41,6 +42,7 @@ const GridData = () => {
             title={update.title}
             date={update.createdAt}
             path={`${publicRouteSlug.UPDATES_DETAIL}/${update.updateCode}/${stringToURL(update?.title)}`}
+            dotPulse={iUpdate < 2}
           >
             {update.thumbnailUrl ? (
               <ProgressiveImage src={update.thumbnailUrl} placeholder={update.lowThumbnailUrl}>
@@ -57,7 +59,7 @@ const GridData = () => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -22,7 +22,7 @@ const AuthController = ({ children }) => {
           token,
         })
         .then((res) => {
-          setUserData(res.data);
+          setUserData({ ...res.data, token });
         })
         .catch((err) => {
           setUserData(null);

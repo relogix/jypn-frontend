@@ -5,7 +5,7 @@ export const VerticalDivider = ({ className = "", children }) => {
         <div className="w-1 h-1 bg-white rounded-full" />
         <div className="h-full bg-white" style={{ width: "1px" }} />
       </div>
-      <div className="text-orient-vertical text-2xs mx-0 my-8" style={{ letterSpacing: "0.2rem" }}>
+      <div className="text-orient-vertical text-2xs mx-0 my-8 uppercase" style={{ letterSpacing: "0.2rem" }}>
         {children}
       </div>
       <div className="flex-1 flex flex-col justify-center items-center">

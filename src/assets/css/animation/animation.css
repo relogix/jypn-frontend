@@ -15,4 +15,8 @@
 .moving-underline:hover::after {
   width: 100%;
 }
+
+.moving-underline.active::after {
+  width: 100%;
+}
 /*# sourceMappingURL=animation.css.map */

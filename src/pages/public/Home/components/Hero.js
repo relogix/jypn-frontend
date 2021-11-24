@@ -7,6 +7,7 @@ import Controller, { Context } from "../controllers/Controller";
 import { useContext } from "react";
 import { publicRouteSlug } from "../../../../router/publicRoute";
 import { stringToURL } from "../../../../utils/string.util";
+import { Loader } from "rsuite";
 
 const Hero = () => {
   const { updates, loadingUpdates } = useContext(Context);
@@ -43,33 +44,35 @@ const Hero = () => {
         </div>
         <div className="flex flex-col-reverse md:flex-row gap-8 mb-10 md:mb-0">
           <div className="flex-1 grid gap-6 md:gap-4">
-            {updates.slice(0, 2).map((update, iUpdate) => (
-              <PreviewCard
-                key={iUpdate}
-                title={update.title}
-                date={update.createdAt}
-                path={`${publicRouteSlug.UPDATES_DETAIL}/${update.updateCode}/${stringToURL(update?.title)}`}
-                dotPulse
-              >
-                {update.thumbnailUrl ? (
-                  <ProgressiveImage src={update.thumbnailUrl} placeholder={update.lowThumbnailUrl}>
-                    {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
-                  </ProgressiveImage>
-                ) : (
-                  <p className="h-full whitespace-pre-wrap truncate">{update.content}</p>
-                )}
-              </PreviewCard>
-            ))}
+            {loadingUpdates ? (
+              <>
+                <PreviewCard loading />
+                <PreviewCard loading />
+              </>
+            ) : (
+              updates.slice(0, 2).map((update, iUpdate) => (
+                <PreviewCard
+                  key={iUpdate}
+                  title={update.title}
+                  date={update.createdAt}
+                  path={`${publicRouteSlug.UPDATES_DETAIL}/${update.updateCode}/${stringToURL(update?.title)}`}
+                  dotPulse
+                >
+                  {update.thumbnailUrl ? (
+                    <ProgressiveImage src={update.thumbnailUrl} placeholder={update.lowThumbnailUrl}>
+                      {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
+                    </ProgressiveImage>
+                  ) : (
+                    <p className="h-full whitespace-pre-wrap truncate">{update.content}</p>
+                  )}
+                </PreviewCard>
+              ))
+            )}
           </div>
           <VerticalDivider className="hidden md:flex">Latest Update</VerticalDivider>
           <Divider className="md:hidden">Latest Update</Divider>
         </div>
       </div>
-
-      <div
-        className="w-full h-20 absolute bottom-0"
-        style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 0%, #111 70%" }}
-      />
     </div>
   );
 };
