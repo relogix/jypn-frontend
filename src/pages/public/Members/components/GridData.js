@@ -17,7 +17,7 @@ const MemberCard = ({ member, onHover = () => "" }) => {
     <Link to={`${publicRouteSlug.MEMBERS_DETAIL}/${member?.nickname}`} style={{ border: "1px solid #777" }}>
       <div className="md:h-60 border-none">
         <img
-          className={`w-full h-full object-cover ${!isHover && "filter"} grayscale opacity-60 hover:opacity-100`}
+          className={`w-full h-full object-cover ${!isHover && "filter"} grayscale md:opacity-60 hover:opacity-100`}
           src={member?.previewImg}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}

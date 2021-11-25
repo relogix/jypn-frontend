@@ -12,7 +12,7 @@ const TableController = ({ children }) => {
   const [updates, setUpdates] = useState([]);
   const [reloadUpdates, setReloadUpdates] = useState(true);
   const [loadingUpdates, setLoadingUpdates] = useState(false);
-  const [updateParam, setUpdateParam] = useState({ sortBy: "createdAt", sortType: "DESC" });
+  const [updateParam, setUpdateParam] = useState({ limit: 10, sortBy: "createdAt", sortType: "DESC" });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
   const [totalData, setTotalData] = useState(0);

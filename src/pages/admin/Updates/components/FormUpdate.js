@@ -113,6 +113,7 @@ const FormUpdate = () => {
                   className="bg-red-300 bg-opacity-100 hover:bg-opacity-80 text-black"
                   loading={loadingRemoveThumbnail}
                   onClick={handleRemoveThumbnail}
+                  disabled={!!thumbnailUrl}
                 >
                   Remove Thumbnail
                 </Button>
