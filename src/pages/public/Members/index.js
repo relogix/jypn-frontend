@@ -4,6 +4,7 @@ import { publicRouteSlug } from "../../../router/publicRoute";
 import GridData from "./components/GridData";
 import Detail from "./components/Detail";
 import { setPageTitle } from "../../../utils/html.util";
+import PageViewsTracking from "../../../components/Analytics/PageViewsTracking";
 
 const Members = () => {
   setPageTitle("Members");
@@ -19,6 +20,8 @@ const Members = () => {
           </Route>
         </Switch>
       </Controller>
+
+      <PageViewsTracking />
     </div>
   );
 };

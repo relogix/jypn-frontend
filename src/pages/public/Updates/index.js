@@ -5,6 +5,7 @@ import GridData from "./components/GridData";
 import { AnimatePresence } from "framer-motion";
 import GridController from "./controllers/GridController";
 import { setPageTitle } from "../../../utils/html.util";
+import PageViewsTracking from "../../../components/Analytics/PageViewsTracking";
 
 const Updates = () => {
   setPageTitle("Updates");
@@ -24,6 +25,8 @@ const Updates = () => {
           </AnimatePresence>
         </GridController>
       </div>
+
+      <PageViewsTracking />
     </div>
   );
 };

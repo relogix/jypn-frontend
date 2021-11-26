@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Upcoming from "./components/Upcoming";
 import Updates from "./components/Updates";
 import { setPageTitle } from "../../../utils/html.util";
+import PageViewsTracking from "../../../components/Analytics/PageViewsTracking";
 
 const Home = () => {
   setPageTitle("");
@@ -19,6 +20,8 @@ const Home = () => {
         {/* <Upcoming /> */}
         <Updates />
       </Controller>
+
+      <PageViewsTracking />
     </motion.div>
   );
 };
