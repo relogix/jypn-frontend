@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import Hero from "./components/Hero";
 import Upcoming from "./components/Upcoming";
 import Updates from "./components/Updates";
+import { setPageTitle } from "../../../utils/html.util";
 
 const Home = () => {
+  setPageTitle("");
   return (
     <motion.div
       initial={{ opacity: 0 }}

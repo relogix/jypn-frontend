@@ -87,9 +87,9 @@ const FormCreate = () => {
         <div>
           <PreviewCard title={title} date={currentDate}>
             {thumbnailSrc ? (
-              <img src={thumbnailSrc} className="object-cover" style={{ aspectRatio: "1920/1080" }} />
+              <img src={thumbnailSrc} className="w-full object-cover" style={{ aspectRatio: "1920/1080" }} />
             ) : (
-              <p className="h-full whitespace-pre-wrap truncate">{content}</p>
+              content
             )}
           </PreviewCard>
         </div>

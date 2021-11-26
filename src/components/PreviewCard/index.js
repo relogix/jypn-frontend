@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
+import ProgressiveImage from "react-progressive-image";
 import { Link } from "react-router-dom";
 import { Loader } from "rsuite";
+import { youtubeLink } from "../../utils/string.util";
 
 const PreviewCard = ({ title = "", date = "", dotPulse = false, path = "#", loading = false, children }) => {
+  const [youtubeEmbedId, setYoutubeEmbedId] = useState();
+  useEffect(() => {
+    typeof children === "string" && setYoutubeEmbedId(youtubeLink(children));
+  }, [children]);
   return (
     <Link
       className="w-full flex flex-col relative bg-white bg-opacity-10 hover:bg-opacity-20 transition-all rounded-xl p-4 px-5 backdrop-filter backdrop-blur-xs"
@@ -24,8 +31,17 @@ const PreviewCard = ({ title = "", date = "", dotPulse = false, path = "#", load
         </div>
       ) : (
         <div className="flex-1 flex items-center">
-          <div className="w-full rounded-md overflow-hidden" style={{ maxHeight: "200px" }}>
-            {children}
+          <div
+            className="w-full rounded-md overflow-hidden h-full whitespace-pre-wrap truncate"
+            style={{ maxHeight: "200px" }}
+          >
+            {youtubeEmbedId ? (
+              <ProgressiveImage src={`https://i.ytimg.com/vi/${youtubeEmbedId}/mqdefault.jpg`}>
+                {(src) => <img src={src} className="w-full object-cover" style={{ aspectRatio: "1920/1080" }} />}
+              </ProgressiveImage>
+            ) : (
+              children
+            )}
           </div>
         </div>
       )}

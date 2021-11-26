@@ -35,7 +35,7 @@ const Updates = () => {
                     {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
                   </ProgressiveImage>
                 ) : (
-                  <p className="h-full whitespace-pre-wrap truncate">{update.content}</p>
+                  update.content
                 )}
               </PreviewCard>
             ))}

@@ -6,8 +6,10 @@ import FormUpdate from "./components/FormUpdate";
 import { adminRouteSlug } from "../../../router/adminRoute";
 import Detail from "./components/Detail";
 import ModalDelete from "./components/ModalDelete";
+import { setPageTitleAdmin } from "../../../utils/html.util";
 
 const Updates = () => {
+  setPageTitleAdmin("Updates");
   return (
     <div className="w-full p-8">
       <Switch>

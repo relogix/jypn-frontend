@@ -7,6 +7,7 @@ import { BiLeftArrowAlt } from "react-icons/bi";
 import { motion } from "framer-motion";
 import LongDotGroup from "../../../../assets/img/components/long-dot-group.png";
 import moment from "moment";
+import { setPageTitle } from "../../../../utils/html.util";
 
 const BackButton = ({ className }) => {
   const history = useHistory();
@@ -26,6 +27,7 @@ const Detail = () => {
   const { member: memberName } = useParams();
   const { members } = useContext(Context);
   const activeMember = members.find((member) => member.nickname === memberName);
+  setPageTitle(activeMember?.nickname);
 
   return (
     <div className="relative w-full h-full" style={{ zIndex: "1" }}>

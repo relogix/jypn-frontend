@@ -4,8 +4,10 @@ import Detail from "./components/Detail";
 import GridData from "./components/GridData";
 import { AnimatePresence } from "framer-motion";
 import GridController from "./controllers/GridController";
+import { setPageTitle } from "../../../utils/html.util";
 
 const Updates = () => {
+  setPageTitle("Updates");
   return (
     <div className="w-full pt-16">
       <div className="p-6 md:p-12 md:py-10">

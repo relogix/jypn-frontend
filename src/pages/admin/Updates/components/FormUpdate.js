@@ -17,6 +17,7 @@ import { Context } from "../controllers/Controller";
 const FormUpdate = () => {
   const {
     form,
+    update,
     loadingSubmitUpdateData,
     handleSubmitUpdateData,
     loadingRemoveThumbnail,
@@ -25,7 +26,7 @@ const FormUpdate = () => {
     handleChangeThumbnail,
   } = useContext(UpdateContext);
   const { handleModalDelete } = useContext(Context);
-  const currentDate = moment(new Date()).format("YYYY-MM-DD");
+  const updateDate = moment(new Date(update?.createdAt)).format("YYYY-MM-DD");
   const [title, content, thumbnail, thumbnailUrl, lowThumbnailUrl] = form.watch([
     "title",
     "content",
@@ -113,7 +114,7 @@ const FormUpdate = () => {
                   className="bg-red-300 bg-opacity-100 hover:bg-opacity-80 text-black"
                   loading={loadingRemoveThumbnail}
                   onClick={handleRemoveThumbnail}
-                  disabled={!!thumbnailUrl}
+                  disabled={!thumbnailUrl}
                 >
                   Remove Thumbnail
                 </Button>
@@ -139,17 +140,17 @@ const FormUpdate = () => {
             thumbnailSrc={thumbnailSrc}
             placeholderSrc={thumbnailSrc === thumbnailUrl && lowThumbnailUrl}
             content={content}
-            date={`Updates - ${currentDate}`}
+            date={`Updates - ${updateDate}`}
           />
         </div>
         <div>
-          <PreviewCard title={title} date={currentDate}>
+          <PreviewCard title={title} date={updateDate}>
             {thumbnailSrc ? (
               <ProgressiveImage src={thumbnailSrc} placeholder={lowThumbnailUrl}>
-                {(src) => <img src={src} className="object-cover" style={{ aspectRatio: "1920/1080" }} />}
+                {(src) => <img src={src} className="w-full object-cover" style={{ aspectRatio: "1920/1080" }} />}
               </ProgressiveImage>
             ) : (
-              <p className="h-full whitespace-pre-wrap truncate">{content}</p>
+              content
             )}
           </PreviewCard>
         </div>

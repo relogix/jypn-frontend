@@ -31,6 +31,7 @@ const UpdateController = ({ children }) => {
         .then((res) => {
           if (mounted) {
             const newUpdate = res.data?.update;
+            console.log(newUpdate);
 
             setUpdate(newUpdate);
             form.reset({

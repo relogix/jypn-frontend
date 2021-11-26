@@ -13,11 +13,13 @@ import { AuthContext } from "../../../controllers/AuthController";
 import { Message } from "rsuite";
 import { adminRouteSlug } from "../../../router/adminRoute";
 import { publicRouteSlug } from "../../../router/publicRoute";
+import { setPageTitleAdmin } from "../../../utils/html.util";
 
 const Login = () => {
   const form = useForm();
   const history = useHistory();
   const { userData, handleLogin, isLoginLoading, loginError } = useContext(AuthContext);
+  setPageTitleAdmin("Login");
 
   useEffect(() => {
     userData && history.push(adminRouteSlug.DASHBOARD);
