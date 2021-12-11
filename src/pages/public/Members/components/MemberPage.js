@@ -66,8 +66,8 @@ const MemberPage = () => {
       >
         <div className="flex justify-center w-full bg-gray-100" style={{ borderRadius: "1.5rem", height: "100%" }}>
           <ProgressiveImage
-            src={`${process.env.REACT_APP_API}${member?.attributes?.coverImages?.data[activeSectionIndex]?.attributes?.url}`}
-            placeholder={`${process.env.REACT_APP_API}${member?.attributes?.coverImages?.data[activeSectionIndex]?.attributes?.formats?.thumbnail?.url}`}
+            src={`${member?.attributes?.coverImages?.data[activeSectionIndex]?.attributes?.url}`}
+            placeholder={`${member?.attributes?.coverImages?.data[activeSectionIndex]?.attributes?.formats?.thumbnail?.url}`}
           >
             {(src) => (
               <img

@@ -58,7 +58,7 @@ const MemberCover = ({ isLogoShow = false }) => {
                   <div className="flex-1 h-1" style={{ borderBottom: "1px solid white" }}></div>
                 </div>
                 <img
-                  src={`${process.env.REACT_APP_API}${member?.attributes?.previewImage?.data?.attributes?.url}`}
+                  src={`${member?.attributes?.previewImage?.data?.attributes?.url}`}
                   className="w-full h-full object-cover object-top"
                 />
               </Link>
