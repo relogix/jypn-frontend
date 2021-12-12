@@ -12,6 +12,7 @@ import MobileVersion from "./MobileVersion";
 const MemberPage = () => {
   const navigate = useNavigate();
   const { memberName } = useParams();
+  console.log(memberName, "whyyy?");
 
   const [member, setMember] = useState();
   useEffect(() => {

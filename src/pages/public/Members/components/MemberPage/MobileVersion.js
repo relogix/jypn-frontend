@@ -3,7 +3,6 @@ import ProgressiveImage from "react-progressive-image";
 import { Link } from "react-router-dom";
 import DynamicComponent from "../../../../../components/DynamicComponent";
 import { publicRouteSlug } from "../../../../../routes/publicRoutes";
-import Title from "./memberSections/Title";
 
 const MobileVersion = ({ member, memberName, sections }) => {
   return (
