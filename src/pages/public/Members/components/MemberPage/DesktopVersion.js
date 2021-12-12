@@ -1,51 +1,12 @@
-import axios from "axios";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import ProgressiveImage from "react-progressive-image";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import DynamicComponent from "../../../../components/DynamicComponent";
-import { publicRouteSlug } from "../../../../routes/publicRoutes";
-import Biography from "./memberSections/Biography";
-import Profile from "./memberSections/Profile";
-import Title from "./memberSections/Title";
+import { Link } from "react-router-dom";
+import DynamicComponent from "../../../../../components/DynamicComponent";
+import { publicRouteSlug } from "../../../../../routes/publicRoutes";
 
-const MemberPage = () => {
-  const navigate = useNavigate();
-  const { memberName } = useParams();
-
-  const [member, setMember] = useState();
-  useEffect(() => {
-    let mounted = true;
-    memberName &&
-      axios
-        .get(`${process.env.REACT_APP_API}/api/member-details?filters[member][name][$eq]=${memberName}&populate=*`)
-        .then((res) => {
-          if (mounted) {
-          }
-          res.data?.data?.length ? setMember(res.data?.data[0]) : navigate(publicRouteSlug.MEMBERS);
-        });
-
-    return () => {
-      mounted = false;
-    };
-  }, [memberName]);
-
-  // Sections
-  const sections = [
-    {
-      name: "Title",
-      Component: Title,
-    },
-    {
-      name: "Profile",
-      Component: Profile,
-    },
-    {
-      name: "Biography",
-      Component: Biography,
-    },
-  ];
+const DesktopVersion = ({ member, memberName, sections }) => {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 
   // Wheel Listener
@@ -136,4 +97,4 @@ const MemberPage = () => {
   );
 };
 
-export default MemberPage;
+export default DesktopVersion;
