@@ -14,6 +14,12 @@ const MemberPage = () => {
   const { memberName } = useParams();
   console.log(memberName, "whyyy?");
 
+  axios
+    .get(`${process.env.REACT_APP_API}/api/member-details?filters[member][name][$eq]=Kyujin&populate=*`)
+    .then((res) => {
+      console.log("klo ini bisa :(", res.data);
+    });
+
   const [member, setMember] = useState();
   useEffect(() => {
     let mounted = true;
@@ -22,8 +28,8 @@ const MemberPage = () => {
         .get(`${process.env.REACT_APP_API}/api/member-details?filters[member][name][$eq]=${memberName}&populate=*`)
         .then((res) => {
           if (mounted) {
+            res.data?.data?.length ? setMember(res.data?.data[0]) : navigate(publicRouteSlug.MEMBERS);
           }
-          res.data?.data?.length ? setMember(res.data?.data[0]) : navigate(publicRouteSlug.MEMBERS);
         });
 
     return () => {
