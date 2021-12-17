@@ -2,6 +2,7 @@ import Footer from "../../templates/Footer";
 import MemberCover from "../Members/components/MemberCover";
 import About from "./components/About";
 import ComingSoon from "./components/ComingSoon";
+import Events from "./components/Events";
 import Hero from "./components/Hero";
 
 const Home = () => {
@@ -11,8 +12,8 @@ const Home = () => {
         <Hero />
         <About />
         <MemberCover />
-        {/* <Member /> */}
       </div>
+      <Events />
       <ComingSoon />
       <Footer />
     </div>

@@ -73,7 +73,7 @@ const MemberCover = ({ isLogoShow = false }) => {
             key={title}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="pb-1 font-semibold md:font-bold text-4xl md:text-6xl md:uppercase poppins bg-clip-text text-white md:text-transparent bg-gradient-primary"
+            className="pb-1 font-semibold md:font-bold text-4xl md:text-6xl md:uppercase poppins bg-clip-text text-transparent bg-gradient-primary"
           >
             {title}
           </motion.h2>

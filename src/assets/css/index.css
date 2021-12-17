@@ -40,4 +40,26 @@ body {
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
 }
+
+.break-always {
+  word-spacing: 1000px;
+}
+
+.fc {
+  width: 100%;
+  height: 100%;
+}
+
+.fc .fc-list-empty {
+  background-color: transparent;
+}
+
+.fc .fc-list-day-cushion {
+  background-color: #222;
+  font-weight: 500;
+}
+
+.fc .fc-list-event:hover * {
+  background-color: #222 !important;
+}
 /*# sourceMappingURL=index.css.map */

@@ -85,3 +85,27 @@ body {
 .text-vertical {
   writing-mode: vertical-rl;
 }
+
+// Always Break Text
+.break-always {
+  word-spacing: 1000px;
+}
+
+// Full Calendar
+.fc {
+  width: 100%;
+  height: 100%;
+
+  .fc-list-empty {
+    background-color: transparent;
+  }
+
+  .fc-list-day-cushion {
+    background-color: #222;
+    font-weight: 500;
+  }
+
+  .fc-list-event:hover * {
+    background-color: #222 !important;
+  }
+}
