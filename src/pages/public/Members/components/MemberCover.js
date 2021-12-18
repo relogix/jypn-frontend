@@ -32,7 +32,7 @@ const MemberCover = ({ isLogoShow = false }) => {
   return (
     <div className="p-8 py-12 md:p-20 md:pt-8 md:pb-16 flex flex-col gap-y-10 md:gap-0 bg-gradient-dark text-white">
       <div className={`font-bold text-xl md:mb-8 ${!isLogoShow && "md:mb-20"}`}>
-        <Link className={`${!isLogoShow && "hidden"}`} to={publicRouteSlug.HOME}>
+        <Link className={`${!isLogoShow && "hidden"} font-bold`} to={publicRouteSlug.HOME}>
           JYPn
         </Link>
       </div>

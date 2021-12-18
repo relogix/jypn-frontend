@@ -19,6 +19,7 @@
     "axios": "^0.24.0",
     "craco": "^0.0.3",
     "framer-motion": "^4",
+    "he": "^1.2.0",
     "moment": "^2.29.1",
     "postcss": "^7",
     "react": "^17.0.2",

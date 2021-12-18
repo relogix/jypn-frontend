@@ -5,6 +5,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 import moment from "moment";
 import { Button } from "@chakra-ui/react";
+import he from "he";
 
 const Events = () => {
   const [currentMonth, setCurrentMonth] = useState("");
@@ -40,15 +41,22 @@ const Events = () => {
           height={500}
           plugins={[googleCalendarPlugin, dayGridPlugin, listPlugin]}
           initialView="listMonth"
-          validRange={{
-            start: moment().format("YYYY-MM-DD"),
-            end: moment().endOf("month").format("YYYY-MM-DD"),
-          }}
           googleCalendarApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
           events={{ googleCalendarId: process.env.REACT_APP_GOOGLE_CALENDAR_ID }}
           headerToolbar={{
             left: "",
             right: "",
+          }}
+          eventDataTransform={(e) => {
+            e.title = he.decode(e.title);
+            return e;
+          }}
+          eventDidMount={(info) => {
+            const description = info.event.extendedProps.description;
+            const dotColor = description?.includes("youtube") ? "border-red-500" : "border-blue-500";
+
+            const dotEl = info.el.getElementsByClassName("fc-list-event-dot")[0];
+            dotEl.classList.add(dotColor);
           }}
           eventClick={(e) => {
             e.jsEvent.preventDefault();

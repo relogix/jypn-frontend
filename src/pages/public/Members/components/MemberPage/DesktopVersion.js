@@ -52,7 +52,7 @@ const DesktopVersion = ({ member, memberName, sections }) => {
           </div>
           <div>
             <Link to={publicRouteSlug.HOME}>
-              <h1 className="text-2xl font-bold poppins">JYPn</h1>
+              <h1 className="text-2xl font-bold">JYPn</h1>
             </Link>
           </div>
         </div>

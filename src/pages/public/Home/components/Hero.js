@@ -8,7 +8,7 @@ const Hero = () => {
           <div className="flex justify-center">
             <div className="flex items-center gap-x-8">
               <div className="w-20 md:w-40" style={{ height: "1px", borderBottom: "1px solid #ccc" }} />
-              <span className="poppins font-semibold text-lg">JYPn</span>
+              <span className="font-bold text-lg">JYPn</span>
               <div className="w-20 md:w-40" style={{ height: "1px", borderBottom: "1px solid #ccc" }} />
             </div>
           </div>
