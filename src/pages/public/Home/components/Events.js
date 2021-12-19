@@ -3,9 +3,9 @@ import FullCalendar from "@fullcalendar/react";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
-import moment from "moment";
 import { Button } from "@chakra-ui/react";
 import he from "he";
+import moment from "moment";
 
 const Events = () => {
   const [currentMonth, setCurrentMonth] = useState("");
@@ -21,7 +21,7 @@ const Events = () => {
       style={{ backgroundColor: "#111" }}
     >
       <div className="md:w-1/3 justify-between items-center">
-        <div className>
+        <div>
           <h2 className="poppins font-bold text-4xl md:text-5xl uppercase bg-clip-text text-transparent bg-gradient-primary">
             Upcoming Events
           </h2>
@@ -41,6 +41,10 @@ const Events = () => {
           height={500}
           plugins={[googleCalendarPlugin, dayGridPlugin, listPlugin]}
           initialView="listMonth"
+          validRange={{
+            start: moment().format("YYYY-MM-DD"),
+            end: moment().add("1", "month").endOf("month").format("YYYY-MM-DD"),
+          }}
           googleCalendarApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
           events={{ googleCalendarId: process.env.REACT_APP_GOOGLE_CALENDAR_ID }}
           headerToolbar={{
